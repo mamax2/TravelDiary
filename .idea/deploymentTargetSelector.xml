@@ -14,15 +14,26 @@
         <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="MainActivity">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-03-19T20:33:49.421807600Z">
+        <option name="selectionMode" value="DIALOG" />
+        <DropdownSelection timestamp="2025-03-22T15:02:05.258111100Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\sohai\.android\avd\Pixel_9_API_35.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\sohai\.android\avd\Medium_Phone.avd" />
             </handle>
           </Target>
         </DropdownSelection>
-        <DialogSelection />
+        <DialogSelection>
+          <targets>
+            <Target type="DEFAULT_BOOT">
+              <handle>
+                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\sohai\.android\avd\Pixel_9_API_35.avd" />
+              </handle>
+            </Target>
+          </targets>
+        </DialogSelection>
+      </SelectionState>
+      <SelectionState runConfigName="SettingsActivity">
+        <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
   </component>
