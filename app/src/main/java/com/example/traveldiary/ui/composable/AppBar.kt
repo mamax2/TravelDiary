@@ -24,13 +24,6 @@ import com.example.traveldiary.NavigationRoute
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBar(title : String, navController: NavHostController) {
-    val backStackEntry by navController.currentBackStackEntryAsState()
-    /*val title = when {
-        backStackEntry?.destination?.hasRoute<NavigationRoute.Screen1>() == true -> "Screen 1"
-        backStackEntry?.destination?.hasRoute<NavigationRoute.Screen2>() == true -> "Screen 2"
-        backStackEntry?.destination?.hasRoute<NavigationRoute.Screen3>() == true -> "Screen 3"
-        else -> "Unknown Screen"
-    }*/
     CenterAlignedTopAppBar(
         title = {
             Text(

@@ -1,4 +1,4 @@
-package com.example.traveldiary.ui.screens
+package com.example.traveldiary.ui.screens.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,12 +18,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.traveldiary.ui.composable.AppBar
 
 
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(navController: NavHostController) {
     val navController = rememberNavController()
     Scaffold(
         topBar = { AppBar("Settings", navController) }

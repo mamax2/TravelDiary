@@ -1,4 +1,4 @@
-package com.example.traveldiary.ui.screens
+package com.example.traveldiary.ui.screens.addTravel
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,18 +31,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.traveldiary.ui.composable.AppBar
 
 @Composable
-fun AddTravelScreen() {
+fun AddTravelScreen(navController: NavHostController) {
     val navController = rememberNavController()
     Scaffold(
         topBar = { AppBar(title = "Add Travel", navController) },
         floatingActionButton = {
             FloatingActionButton(
                 containerColor = MaterialTheme.colorScheme.tertiary,
-                onClick = { /*TODO*/ }
+                onClick = { navController.navigateUp() }
             ) {
                 Icon(Icons.Outlined.Check, "Add Travel")
             }

@@ -1,5 +1,6 @@
-package com.example.traveldiary.ui.screens
+package com.example.traveldiary.ui.screens.travelDetails
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,20 +24,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
 import com.example.traveldiary.ui.composable.AppBar
 
 
 @Composable
-fun TravelDetailsScreen() {
-    val navController = rememberNavController()
+fun TravelDetailsScreen(navController: NavHostController, travelId: String) {
+    val ctx=LocalContext.current
+
+    fun ShareDetails(){
+        val sendIntent= Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, travelId)
+        }
+        val shareIntent = Intent.createChooser(sendIntent, "Share Travel")
+        if (shareIntent.resolveActivity(ctx.packageManager) != null) {
+            ctx.startActivity(shareIntent)
+        }
+    }
+
     Scaffold(
         topBar = { AppBar(title = "Travel Details", navController ) },
         floatingActionButton = {
             FloatingActionButton(
                 containerColor = MaterialTheme.colorScheme.tertiary,
-                onClick = { /*TODO*/ }
+                onClick = ::ShareDetails
             ) {
                 Icon(Icons.Outlined.Share, "Share Travel")
             }
@@ -60,7 +74,7 @@ fun TravelDetailsScreen() {
                     .padding(36.dp)
             )
             Text(
-                "Destination",
+                travelId,
                 style = MaterialTheme.typography.titleLarge
             )
             Text(

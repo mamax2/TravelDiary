@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.traveldiary.ui.screens.AddTravelScreen
-import com.example.traveldiary.ui.screens.HomeScreen
-import com.example.traveldiary.ui.screens.SettingsScreen
-import com.example.traveldiary.ui.screens.TravelDetailsScreen
+import androidx.navigation.compose.rememberNavController
 import com.example.traveldiary.ui.theme.TravelDiaryTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,10 +13,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TravelDiaryTheme {
-                HomeScreen()
-                // TravelDetailsScreen()
-                // AddTravelScreen()
-                // SettingsScreen()
+                val navController = rememberNavController()
+                NavGraph(navController)
             }
         }
     }

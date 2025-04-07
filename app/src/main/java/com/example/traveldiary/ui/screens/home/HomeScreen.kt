@@ -1,4 +1,4 @@
-package com.example.traveldiary.ui.screens
+package com.example.traveldiary.ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,12 +33,13 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
+import com.example.traveldiary.NavigationRoute
 import com.example.traveldiary.ui.composable.AppBar
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
     val items = (1..20).map { "Item n°$it" }
 
 
@@ -46,7 +47,7 @@ fun HomeScreen() {
         floatingActionButton = {
             FloatingActionButton(
                 containerColor = MaterialTheme.colorScheme.tertiary,
-                onClick = { /*TODO*/ }
+                onClick = { navController.navigate(NavigationRoute.Travel) }
             ) {
                 Icon(Icons.Outlined.Add, "Add Travel")
             }
@@ -60,16 +61,16 @@ fun HomeScreen() {
             contentPadding = PaddingValues(8.dp, 8.dp, 8.dp, 80.dp),
             modifier =  Modifier.padding(contentPadding)
         ) {
-            items(items) { item -> TravelItem(item) }
+            items(items) { item -> TravelItem(item, onClick = { navController.navigate(NavigationRoute.TravelDetails(item)) }) }
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TravelItem(item: String) {
+fun TravelItem(item: String , onClick: () -> Unit) {
     Card(
-        onClick = { navController.navigate(NavigationRoute.TravelDetails) },
+        onClick = onClick ,
         modifier = Modifier
             .size(150.dp)
             .fillMaxWidth(),
